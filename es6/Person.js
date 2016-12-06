@@ -11,6 +11,6 @@ class Person{
 
 Person.prototype.action=function(){
   return 'this is a test';
-}
+};
 
 export default Person;
