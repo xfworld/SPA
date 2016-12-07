@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.config.babel.js --progress --colors --port 5001 ",
-    "build": "webpack -p --config webpack.config.babel.js --progress --colors"
+    "start": "webpack-dev-server --config webpack.config.babel.js --progress --colors --port 5001 --inline --content-base dist --devtool eval ",
+    "build": "webpack --config webpack.config.babel.js --progress --colors"
   },
   "keywords": [
     "spa"
