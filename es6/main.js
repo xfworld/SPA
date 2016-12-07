@@ -1,11 +1,13 @@
 import Person from './Person';
-import BaseUrl from './BaseUrl';
+import BaseUrl from './src/components/BaseUrl';
 import 'amazeui/dist/js/amazeui.min';
 import 'amazeui/dist/css/amazeui.min';
-import './admin';
+import './src/css/admin';
 // Template
 //import titleTemplate from '../template/title.handlebars';
 import indexTemplate from '../template/index/index.handlebars';
+
+
 // let p = new Person('张三', 20);
 // document.write(p.say());
 // document.write(p.action());

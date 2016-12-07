@@ -15,7 +15,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 //import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default {
-    entry: "./es6/main.js", //入口文件,
+    entry: "./src/main/index.js", //入口文件,
     output: { //打包输出的文件
         // path: __dirname,
         // filename: "bundle.js"
@@ -69,8 +69,8 @@ export default {
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html',
-            filename: './index.html',
-            chunks: ['main'], //, 'vendor']
+            filename: 'index.html',
+          //  chunks: ['index'], //, 'vendor']
             hash: false,
             minify: { //压缩HTML文件
                 removeComments: true, //移除HTML中的注释
