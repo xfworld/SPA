@@ -17,8 +17,8 @@ export default {
         // filename: "bundle.js"
         path: path.join(__dirname, 'dist'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
         //  publicPath: 'dist/', //模板、样式、脚本、图片等资源对应的server上的路径
-        filename: 'js/[name].js', //每个页面对应的主js的生成配置
-        chunkFilename: 'js/[id].chunk.js' // chunk生成的配置
+        filename: '[name].min.js', //每个页面对应的主js的生成配置
+        chunkFilename: '[id].chunk.min.js' // chunk生成的配置
     },
     module: {
         loaders: [{
@@ -31,7 +31,7 @@ export default {
             loader: 'babel-loader',
             query: {
                 presets: ['es2015'],
-                plugins: ['transform-runtime']
+              //  plugins: ['transform-runtime']
             }
         }]
     },
@@ -45,7 +45,7 @@ export default {
         new HtmlWebpackPlugin({
             template: './index.html',
             filename: './index.html',
-            chunks: ['main', 'vendor'],
+            chunks: ['main'],
             hash: true,
             minify: { //压缩HTML文件
                 removeComments: true, //移除HTML中的注释
