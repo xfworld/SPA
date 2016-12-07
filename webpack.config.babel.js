@@ -19,12 +19,14 @@ export default {
         // filename: "bundle.js"
         path: path.join(__dirname, 'dist'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
         //  publicPath: 'dist/', //模板、样式、脚本、图片等资源对应的server上的路径
-        filename: '[name].js', //每个页面对应的主js的生成配置
-        chunkFilename: '[id].chunk.js', // chunk生成的配置
-        sourceMapFilename:'[file].map'
+        //  filename: '[name].js', //每个页面对应的主js的生成配置
+        //      chunkFilename: '[id].chunk.js', // chunk生成的配置
+        filename: '[name].[chunkhash:8].bundle.js',
+        chunkFilename: '[id].[chunkhash:8].bundle.js',
+        //      sourceMapFilename:'[file].map'
     },
     //外部依赖 不参与编译
-    externals:{
+    externals: {
 
     },
     module: {
@@ -50,19 +52,19 @@ export default {
         }]
     },
     resolve: { // 现在你require文件的时候可以直接使用require('file')，不用使用require('file.coffee')
-        extensions: ['', '.js', '.json']
+        extensions: ['', '.js', '.json', '.css']
     },
     node: {
         fs: 'empty'
     },
-    debug: true,
-    devtool: 'source-map',
+    debug: false,
+    //    devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html',
             filename: './index.html',
             chunks: ['main', 'vendor'],
-            hash: true,
+            hash: false,
             minify: { //压缩HTML文件
                 removeComments: true, //移除HTML中的注释
                 collapseWhitespace: false //删除空白符与换行符
@@ -72,19 +74,18 @@ export default {
             $: "jquery",
             jQuery: "jquery"
         }),
-           new webpack.HotModuleReplacementPlugin(), //开启热替换插件
-           new webpack.NoErrorsPlugin(),
-           new webpack.optimize.OccurenceOrderPlugin(),
-      //     new ExtractTextPlugin("[name].chunk.css"),   //单独使用style标签加载css并设置其路径
-        new webpack.optimize.CommonsChunkPlugin('vendor.bundle.js',3), //这是妮第三方库打包生成的文件
-        // new webpack.optimize.UglifyJsPlugin({
-        //     sourceMap: false,
-        //     mangle: false,
-        //     compress: {
-        //         warnings: false
-        //     }
-        // })
-        //,
+        new webpack.HotModuleReplacementPlugin(), //开启热替换插件
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        //     new ExtractTextPlugin("[name].chunk.css"),   //单独使用style标签加载css并设置其路径
+        new webpack.optimize.CommonsChunkPlugin('vendor','vendor.[hash:8].bundle.js'), //这是妮第三方库打包生成的文件
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false,
+            mangle: false,
+            compress: {
+                warnings: false
+            }
+        })
         // new CopyWebpackPlugin([{
         //     from: __dirname + '/assets',
         //     to: __dirname + '/dist/assets'

@@ -1,8 +1,8 @@
 import Person from './Person';
 import BaseUrl from './BaseUrl';
 import 'amazeui/dist/js/amazeui.min';
-import 'amazeui/dist/css/amazeui.min.css';
-import './admin.css';
+import 'amazeui/dist/css/amazeui.min';
+import './admin';
 // Template
 //import titleTemplate from '../template/title.handlebars';
 import indexTemplate from '../template/index/index.handlebars';
