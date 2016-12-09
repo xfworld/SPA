@@ -1,5 +1,4 @@
-import Box from 't3js';
-import 'amazeui/dist/js/amazeui.min';
+//import Box from 't3js';
 
 Box.Application.addModule('headerbarMenu', function(context) {
 
@@ -48,7 +47,7 @@ Box.Application.addModule('headerbarMenu', function(context) {
 
             moduleEl = context.getElement();
             commonBasePathService = context.getService('commonBasePathService');
-            commonModuleService = context.getService('commonModuleService');
+            commonModuleService = context.getService('commonStaticModuleService');
             commonFetchService = context.getService('commonFetchService');
             initAllActionUrl(commonBasePathService.getBasePath());
             initEditModule();

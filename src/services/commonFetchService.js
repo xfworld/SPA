@@ -1,4 +1,4 @@
-import Box from 't3js';
+
 /**
  * @fileoverview common Fetch Service
  * @author xfworld

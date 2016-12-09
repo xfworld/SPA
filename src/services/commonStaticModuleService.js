@@ -1,15 +1,15 @@
-import Box from 't3js';
+
 /**
- * @fileoverview common Module Service
+ * @fileoverview common Static Module Service
  * @author xfworld
  * @Date  2016-09-20
  */
 
 /**
- * commonModuleService
- * 提供模块服务
+ * commonStaticModuleService
+ * 提供静态模块服务
  */
-Box.Application.addService('commonModuleService', function(application){
+Box.Application.addService('commonStaticModuleService', function(application){
 
 	'use strict';
 

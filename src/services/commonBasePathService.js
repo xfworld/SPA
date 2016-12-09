@@ -1,4 +1,3 @@
-import Box from 't3js';
 import BaseUrl from '../components/BaseUrl';
 /**
  * @fileoverview common BasePath Service
