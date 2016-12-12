@@ -1,3 +1,6 @@
+
+'use strict';
+
 //import Box from 't3js';
 //import 'amazeui/dist/js/amazeui.min';
 import 'amazeui/dist/css/amazeui.min';
@@ -13,6 +16,9 @@ import '../services/commonDynamicModuleService';
 import '../modules/headerbarMenu';
 import '../modules/sidebarMenu';
 
+import Handlebars from 'handlebars/handlebars.runtime';
+import Helps from 'handlebars-helpers';
+
 import indexIcon from '../images/app-icon72x72@2x.png';
 import indexFavicon from '../images/favicon.png';
 
@@ -23,6 +29,10 @@ import imgFirefox from '../images/admin-firefox.png';
 import imgOpera from '../images/admin-opera.png';
 import imgSafari from '../images/admin-safari.png';
 
+
+Handlebars.registerHelper('wrapWithMoo', (options) => {
+  return new Handlebars.SafeString(`moo! ${options.fn(this)} moo!`);
+});
 
 document.addEventListener("DOMContentLoaded", function() {
 	$('body').append(indexTemplate({

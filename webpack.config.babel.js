@@ -33,11 +33,12 @@ export default {
     },
     module: {
         loaders: [{
-            test: /\.handlebars$/,
+            test: /\.hbs$/,
             exclude: /node_modules/,
             loader: 'handlebars-loader',
             query:{
-              name:'hbs/[name].[ext]'
+              name:'hbs/[name].[ext]',
+              debug:true
             }
         }, {
             //test: path.join(__dirname, 'es6'),
