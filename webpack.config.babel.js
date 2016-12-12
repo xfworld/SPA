@@ -71,8 +71,9 @@ export default {
     node: {
         fs: 'empty'
     },
-    debug: false,
-    //    devtool: 'source-map',
+    watch:true,
+    debug: true,
+    devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/main/index.html',
@@ -96,7 +97,7 @@ export default {
         //     new ExtractTextPlugin("[name].chunk.css"),   //单独使用style标签加载css并设置其路径
         //  new webpack.optimize.CommonsChunkPlugin('vendor','vendor.[hash:8].bundle.js'), //这是妮第三方库打包生成的文件
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false,
+            sourceMap: true,
             mangle: false,
             compress: {
                 warnings: false

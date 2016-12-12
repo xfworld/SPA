@@ -7,7 +7,7 @@ import 'amazeui/dist/css/amazeui.min';
 import AMUI from 'amazeui';
 import '../css/admin';
 
-import indexTemplate from '../template/index/index.handlebars';
+import indexTemplate from '../template/index/index.hbs';
 
 import '../services/commonFetchService';
 import '../services/commonBasePathService';
@@ -16,8 +16,10 @@ import '../services/commonDynamicModuleService';
 import '../modules/headerbarMenu';
 import '../modules/sidebarMenu';
 
-import Handlebars from 'handlebars/handlebars.runtime';
-import Helps from 'handlebars-helpers';
+import Handlebars from 'handlebars/dist/handlebars.runtime';
+//import Helps from 'handlebars-helpers';
+//
+//const helpers = require('handlebars-helpers');
 
 import indexIcon from '../images/app-icon72x72@2x.png';
 import indexFavicon from '../images/favicon.png';
@@ -50,6 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
 			{img:imgSafari,name:'Safari',number:'4000'},
 		]
 }));
-
+  alert(Handlebars);
   Box.Application.init({debug:true});
 });
