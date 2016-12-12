@@ -1,3 +1,5 @@
+'use strict';
+
 import Person from './Person';
 import BaseUrl from './src/components/BaseUrl';
 import 'amazeui/dist/js/amazeui.min';
