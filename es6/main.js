@@ -6,8 +6,8 @@ import 'amazeui/dist/js/amazeui.min';
 import 'amazeui/dist/css/amazeui.min';
 import './src/css/admin';
 // Template
-//import titleTemplate from '../template/title.handlebars';
-import indexTemplate from '../template/index/index.handlebars';
+//import titleTemplate from '../template/title.hbs';
+import indexTemplate from '../template/index/index.hbs';
 
 
 // let p = new Person('张三', 20);
