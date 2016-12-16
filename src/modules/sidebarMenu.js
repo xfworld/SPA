@@ -4,6 +4,7 @@ import imgIE from '../images/admin-ie.png';
 import imgFirefox from '../images/admin-firefox.png';
 import imgOpera from '../images/admin-opera.png';
 import imgSafari from '../images/admin-safari.png';
+import 'babel-polyfill';
 
 Box.Application.addModule('sidebarMenu', function(context) {
 
@@ -13,23 +14,45 @@ Box.Application.addModule('sidebarMenu', function(context) {
     // Private
     //--------------------------------------------------------------------------
     let moduleEl;
-    let moduleEdit;
+    let moduleView;
     let moduleUrl;
     let commonBasePathService;
     let commonDynamicModuleService;
     let commonFetchService;
+    let commonHandlebarService;
 
     let moduleTarget;
-    let req = require.context("../template/", true, /^\.\/.*\.handlebars$/);
 
     function initAllActionUrl(basePath) {
         moduleUrl = {};
 
     }
 
-    function initEditModule() {
-        moduleEdit = {};
-
+    function initModule() {
+        moduleView = {};
+        moduleView.init=function(){
+          this.sidebars=moduleEl.querySelectorAll('a[data-type=active-module]');
+        };
+        moduleView.cleanStatus=function(){
+          if(this.sidebars!=null){
+            for(let item of this.sidebars){
+              if($(item).hasClass('am-active')){
+                $(item).removeClass('am-active');
+              }
+            }
+            //
+            // this.sidebars.forEach(function(item,index){
+            //     if($(item).hasClass('am-active')){
+            //       $(item).removeClass('am-active');
+            //     }
+            // });
+          }
+        };
+        moduleView.activeStatus=function(element){
+           this.cleanStatus();
+           $(element).addClass('am-active');
+        };
+        moduleView.init();
     }
 
 
@@ -56,9 +79,10 @@ Box.Application.addModule('sidebarMenu', function(context) {
             commonBasePathService = context.getService('commonBasePathService');
             commonDynamicModuleService = context.getService('commonDynamicModuleService');
             commonFetchService = context.getService('commonFetchService');
+            commonHandlebarService =context.getService('commonHandlebarService');
             moduleTarget = document.querySelector('.admin-content-body');
             initAllActionUrl(commonBasePathService.getBasePath());
-            initEditModule();
+            initModule();
 
         },
 
@@ -68,10 +92,12 @@ Box.Application.addModule('sidebarMenu', function(context) {
          */
         destroy: function() {
             moduleEl = null;
-            moduleEdit = null;
+            moduleView = null;
             moduleUrl = null;
             commonDynamicModuleService = null;
             commonFetchService = null;
+            commonHandlebarService =null;
+            commonBasePathService =null;
 
         },
         onclick: function(event, element, elementType) {
@@ -80,7 +106,7 @@ Box.Application.addModule('sidebarMenu', function(context) {
                     let target = element.getAttribute('data-moduleName');
                     if (target !== null && target !== undefined) {
                         let moudleData={};
-                        if(target.includes('index')){
+                        if(target.includes('item')){
                           moudleData={pages: [
                       			{ type: "success", icon: "file-text",name:"新增页面",number:"2300" },
                       			{ type: "warning", icon: "briefcase",name:"成交订单",number:"308" },
@@ -95,9 +121,10 @@ Box.Application.addModule('sidebarMenu', function(context) {
                       			{img:imgSafari,name:'Safari',number:'4000'},
                       		]};
                         }
-                        let temp=req(target);
+                        let temp=commonHandlebarService.findHandlebarTemplate(target);
                         let baseModule=new BaseModule(temp,moduleTarget,moudleData);
                         commonDynamicModuleService.toggleModule(baseModule);
+                        moduleView.activeStatus(element);
                     }
 
             }

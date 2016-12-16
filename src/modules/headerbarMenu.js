@@ -13,6 +13,7 @@ Box.Application.addModule('headerbarMenu', function(context) {
     let commonBasePathService;
     let commonModuleService;
     let commonFetchService;
+    let commonHandlebarService;
 
     function initAllActionUrl(basePath) {
         moduleUrl = {};
@@ -49,6 +50,7 @@ Box.Application.addModule('headerbarMenu', function(context) {
             commonBasePathService = context.getService('commonBasePathService');
             commonModuleService = context.getService('commonStaticModuleService');
             commonFetchService = context.getService('commonFetchService');
+            commonHandlebarService = context.getService('commonHandlebarService');
             initAllActionUrl(commonBasePathService.getBasePath());
             initEditModule();
 

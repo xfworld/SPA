@@ -1,4 +1,4 @@
-import BaseUrl from '../components/BaseUrl';
+import BaseUrl from '../../components/BaseUrl';
 /**
  * @fileoverview common BasePath Service
  * @author xfworld

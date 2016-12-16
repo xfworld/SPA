@@ -9,10 +9,11 @@ import '../css/admin';
 
 import indexTemplate from '../template/index/index.hbs';
 
-import '../services/commonFetchService';
-import '../services/commonBasePathService';
-import '../services/commonStaticModuleService';
-import '../services/commonDynamicModuleService';
+import '../services/base/commonFetchService';
+import '../services/base/commonBasePathService';
+import '../services/base/commonStaticModuleService';
+import '../services/base/commonDynamicModuleService';
+import '../services/base/commonHandlebarService';
 import '../modules/headerbarMenu';
 import '../modules/sidebarMenu';
 
@@ -52,6 +53,5 @@ document.addEventListener("DOMContentLoaded", function() {
 			{img:imgSafari,name:'Safari',number:'4000'},
 		]
 }));
-  alert(Handlebars);
   Box.Application.init({debug:true});
 });
